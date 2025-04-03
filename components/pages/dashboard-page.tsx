@@ -7,12 +7,24 @@ import {
   DollarSign,
   TrendingUp,
   AlertCircle,
+  Download,
+  ArrowRight,
 } from "lucide-react";
 import TransactionList from "@/components/transaction-list";
 import BudgetTracking from "@/components/budget-tracking";
 import ApprovalRequests from "@/components/approval-requests";
 import { useEffect, useState } from "react";
 import db from "@/lib/data";
+import Layout from "@/components/layout";
+import { Card, CardContent, CardFooter, CardHeader } from "../ui/card";
+import { Button } from "@/components/ui/button";
+import TotalBalanceCard from "../dashboard/total-balance-card";
+import MonthlyIncomeCard from "../dashboard/monthly-income-card";
+import MonthlyExpensesCard from "../dashboard/monthly-expenses-card";
+import BudgetUtilizationCard from "../dashboard/budget-utilization-card";
+import RecentTransactionCard from "../dashboard/recent-transaction-card";
+import ApprovalRequestCard from "../dashboard/approval-request-card";
+import BudgetTrackingCard from "../dashboard/budget-tracking-card";
 
 interface FinancialSummary {
   totalBalance: number;
@@ -114,126 +126,32 @@ export default function DashboardPage() {
   }, []);
 
   return (
-    <div className="space-y-6">
-      {/* Financial Summary Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-        <div className="bg-white dark:bg-[#0F0F12] rounded-xl p-4 flex items-center border border-gray-200 dark:border-[#1F1F23]">
-          <div className="p-3 rounded-full bg-blue-100 dark:bg-blue-900/30 mr-4">
-            <Wallet className="w-5 h-5 text-blue-600 dark:text-blue-400" />
-          </div>
-          <div>
-            <p className="text-sm text-gray-500 dark:text-gray-400">
-              Total Balance
-            </p>
-            <h3 className="text-xl font-bold text-gray-900 dark:text-white">
-              $
-              {summary.totalBalance.toLocaleString(undefined, {
-                minimumFractionDigits: 2,
-                maximumFractionDigits: 2,
-              })}
-            </h3>
-            <p className="text-xs text-green-600 dark:text-green-400">
-              +2.5% from last month
-            </p>
-          </div>
+    <Layout>
+      <div className="space-y-4">
+        {/* Financial Summary Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+          <TotalBalanceCard totalBalance={summary.totalBalance} />
+
+          <MonthlyIncomeCard monthlyIncome={summary.monthlyIncome} />
+
+          <MonthlyExpensesCard monthlyExpenses={summary.monthlyExpenses} />
+
+          <BudgetUtilizationCard
+            budgetUtilization={summary.budgetUtilization}
+            totalBudget={summary.totalBudget}
+          />
         </div>
 
-        <div className="bg-white dark:bg-[#0F0F12] rounded-xl p-4 flex items-center border border-gray-200 dark:border-[#1F1F23]">
-          <div className="p-3 rounded-full bg-green-100 dark:bg-green-900/30 mr-4">
-            <DollarSign className="w-5 h-5 text-green-600 dark:text-green-400" />
-          </div>
-          <div>
-            <p className="text-sm text-gray-500 dark:text-gray-400">
-              Monthly Income
-            </p>
-            <h3 className="text-xl font-bold text-gray-900 dark:text-white">
-              $
-              {summary.monthlyIncome.toLocaleString(undefined, {
-                minimumFractionDigits: 2,
-                maximumFractionDigits: 2,
-              })}
-            </h3>
-            <p className="text-xs text-green-600 dark:text-green-400">
-              +15% from last month
-            </p>
-          </div>
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
+          <RecentTransactionCard />
+
+          {/* Approval Requests */}
+          <ApprovalRequestCard />
         </div>
 
-        <div className="bg-white dark:bg-[#0F0F12] rounded-xl p-4 flex items-center border border-gray-200 dark:border-[#1F1F23]">
-          <div className="p-3 rounded-full bg-red-100 dark:bg-red-900/30 mr-4">
-            <CreditCard className="w-5 h-5 text-red-600 dark:text-red-400" />
-          </div>
-          <div>
-            <p className="text-sm text-gray-500 dark:text-gray-400">
-              Monthly Expenses
-            </p>
-            <h3 className="text-xl font-bold text-gray-900 dark:text-white">
-              $
-              {summary.monthlyExpenses.toLocaleString(undefined, {
-                minimumFractionDigits: 2,
-                maximumFractionDigits: 2,
-              })}
-            </h3>
-            <p className="text-xs text-red-600 dark:text-red-400">
-              +8% from last month
-            </p>
-          </div>
-        </div>
-
-        <div className="bg-white dark:bg-[#0F0F12] rounded-xl p-4 flex items-center border border-gray-200 dark:border-[#1F1F23]">
-          <div className="p-3 rounded-full bg-purple-100 dark:bg-purple-900/30 mr-4">
-            <TrendingUp className="w-5 h-5 text-purple-600 dark:text-purple-400" />
-          </div>
-          <div>
-            <p className="text-sm text-gray-500 dark:text-gray-400">
-              Budget Utilization
-            </p>
-            <h3 className="text-xl font-bold text-gray-900 dark:text-white">
-              {summary.budgetUtilization}%
-            </h3>
-            <p className="text-xs text-gray-600 dark:text-gray-400">
-              Budget: $
-              {summary.totalBudget.toLocaleString(undefined, {
-                minimumFractionDigits: 2,
-                maximumFractionDigits: 2,
-              })}
-            </p>
-          </div>
-        </div>
+        {/* Budget Tracking */}
+        <BudgetTrackingCard />
       </div>
-
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        {/* Recent Transactions */}
-        <div className="lg:col-span-2 bg-white dark:bg-[#0F0F12] rounded-xl p-6 flex flex-col border border-gray-200 dark:border-[#1F1F23]">
-          <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-4 text-left flex items-center gap-2">
-            <Wallet className="w-4 h-4 text-zinc-900 dark:text-zinc-50" />
-            Recent Transactions
-          </h2>
-          <div className="flex-1">
-            <TransactionList />
-          </div>
-        </div>
-
-        {/* Approval Requests */}
-        <div className="bg-white dark:bg-[#0F0F12] rounded-xl p-6 flex flex-col border border-gray-200 dark:border-[#1F1F23]">
-          <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-4 text-left flex items-center gap-2">
-            <AlertCircle className="w-4 h-4 text-zinc-900 dark:text-zinc-50" />
-            Pending Approvals
-          </h2>
-          <div className="flex-1">
-            <ApprovalRequests />
-          </div>
-        </div>
-      </div>
-
-      {/* Budget Tracking */}
-      <div className="bg-white dark:bg-[#0F0F12] rounded-xl p-6 flex flex-col items-start justify-start border border-gray-200 dark:border-[#1F1F23]">
-        <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-4 text-left flex items-center gap-2">
-          <Calendar className="w-4 h-4 text-zinc-900 dark:text-zinc-50" />
-          Budget Tracking
-        </h2>
-        <BudgetTracking />
-      </div>
-    </div>
+    </Layout>
   );
 }

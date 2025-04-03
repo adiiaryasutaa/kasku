@@ -1,18 +1,39 @@
-"use client"
+"use client";
 
-import { useState, useEffect } from "react"
-import { Users, UserPlus, Search, MoreHorizontal, Mail, Shield, UserX, User } from "lucide-react"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { useState, useEffect } from "react";
+import {
+  Users,
+  UserPlus,
+  Search,
+  MoreHorizontal,
+  Mail,
+  Shield,
+  UserX,
+  User,
+} from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
+} from "@/components/ui/dropdown-menu";
 import {
   Dialog,
   DialogContent,
@@ -21,65 +42,69 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@/components/ui/dialog"
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
-import { Badge } from "@/components/ui/badge"
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
-import { Label } from "@/components/ui/label"
-import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { format } from "date-fns"
-import Layout from "../layout"
-import db from "@/lib/data"
+} from "@/components/ui/dialog";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
+import { Badge } from "@/components/ui/badge";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Label } from "@/components/ui/label";
+import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { format } from "date-fns";
+import Layout from "../layout";
+import db from "@/lib/data";
 
 interface Member {
-  id: string
-  userId: string
-  organizationId: string
-  role: string
-  createdAt: string
-  updatedAt: string
+  id: string;
+  userId: string;
+  organizationId: string;
+  role: string;
+  createdAt: string;
+  updatedAt: string;
   user: {
-    id: string
-    name: string
-    email: string
-    role: string
-    avatarUrl?: string
-  }
+    id: string;
+    name: string;
+    email: string;
+    role: string;
+    avatarUrl?: string;
+  };
 }
 
 export default function MembersPage() {
-  const [members, setMembers] = useState<Member[]>([])
-  const [filteredMembers, setFilteredMembers] = useState<Member[]>([])
-  const [isLoading, setIsLoading] = useState(true)
-  const [searchQuery, setSearchQuery] = useState("")
-  const [roleFilter, setRoleFilter] = useState("")
-  const [isAddMemberOpen, setIsAddMemberOpen] = useState(false)
-  const [newMemberEmail, setNewMemberEmail] = useState("")
-  const [newMemberRole, setNewMemberRole] = useState("member")
-  const [activeTab, setActiveTab] = useState("all")
-  const [currentOrganizationId, setCurrentOrganizationId] = useState("org_01") // Default organization
+  const [members, setMembers] = useState<Member[]>([]);
+  const [filteredMembers, setFilteredMembers] = useState<Member[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [roleFilter, setRoleFilter] = useState("");
+  const [isAddMemberOpen, setIsAddMemberOpen] = useState(false);
+  const [newMemberEmail, setNewMemberEmail] = useState("");
+  const [newMemberRole, setNewMemberRole] = useState("member");
+  const [activeTab, setActiveTab] = useState("all");
+  const [currentOrganizationId, setCurrentOrganizationId] = useState("org_01"); // Default organization
 
   useEffect(() => {
     async function loadMembers() {
       try {
-        setIsLoading(true)
+        setIsLoading(true);
 
         // Fetch organization members
         const organizationMembers = await db.organizationMembers.findMany({
           where: { organizationId: currentOrganizationId },
-        })
+        });
 
         // Fetch users for member details
-        const users = await db.users.findMany()
+        const users = await db.users.findMany();
 
         // Create a lookup map for users
-        const userMap = users.reduce(
-          (map, user) => {
-            map[user.id] = user
-            return map
-          },
-          {} as Record<string, any>,
-        )
+        const userMap = users.reduce((map, user) => {
+          map[user.id] = user;
+          return map;
+        }, {} as Record<string, any>);
 
         // Create member objects with user details
         const memberData = organizationMembers.map((member) => ({
@@ -91,53 +116,55 @@ export default function MembersPage() {
             role: member.role,
             avatarUrl: null,
           },
-        }))
+        }));
 
-        setMembers(memberData)
-        setFilteredMembers(memberData)
+        setMembers(memberData);
+        setFilteredMembers(memberData);
       } catch (error) {
-        console.error("Error loading members:", error)
+        console.error("Error loading members:", error);
       } finally {
-        setIsLoading(false)
+        setIsLoading(false);
       }
     }
 
-    loadMembers()
-  }, [currentOrganizationId])
+    loadMembers();
+  }, [currentOrganizationId]);
 
   // Apply filters
   useEffect(() => {
-    let result = [...members]
+    let result = [...members];
 
     // Filter by search query
     if (searchQuery) {
-      const query = searchQuery.toLowerCase()
+      const query = searchQuery.toLowerCase();
       result = result.filter(
-        (member) => member.user.name.toLowerCase().includes(query) || member.user.email.toLowerCase().includes(query),
-      )
+        (member) =>
+          member.user.name.toLowerCase().includes(query) ||
+          member.user.email.toLowerCase().includes(query)
+      );
     }
 
     // Filter by role
     if (roleFilter) {
-      result = result.filter((member) => member.role === roleFilter)
+      result = result.filter((member) => member.role === roleFilter);
     }
 
     // Filter by tab
     if (activeTab !== "all") {
       result = result.filter((member) => {
-        if (activeTab === "admin") return member.role === "admin"
-        if (activeTab === "treasurer") return member.role === "treasurer"
-        if (activeTab === "member") return member.role === "member"
-        if (activeTab === "viewer") return member.role === "viewer"
-        return true
-      })
+        if (activeTab === "admin") return member.role === "admin";
+        if (activeTab === "treasurer") return member.role === "treasurer";
+        if (activeTab === "member") return member.role === "member";
+        if (activeTab === "viewer") return member.role === "viewer";
+        return true;
+      });
     }
 
-    setFilteredMembers(result)
-  }, [members, searchQuery, roleFilter, activeTab])
+    setFilteredMembers(result);
+  }, [members, searchQuery, roleFilter, activeTab]);
 
   const handleAddMember = async () => {
-    if (!newMemberEmail) return
+    if (!newMemberEmail) return;
 
     try {
       // In a real app, this would send an invitation or create a new user
@@ -151,7 +178,7 @@ export default function MembersPage() {
         avatarUrl: null,
         createdAt: new Date().toISOString(),
         updatedAt: new Date().toISOString(),
-      }
+      };
 
       // Create a new member
       const newMember = {
@@ -162,31 +189,33 @@ export default function MembersPage() {
         createdAt: newUser.createdAt,
         updatedAt: newUser.updatedAt,
         user: newUser,
-      }
+      };
 
       // Add to state
-      setMembers((prev) => [...prev, newMember])
+      setMembers((prev) => [...prev, newMember]);
 
       // Reset form
-      setNewMemberEmail("")
-      setNewMemberRole("member")
-      setIsAddMemberOpen(false)
+      setNewMemberEmail("");
+      setNewMemberRole("member");
+      setIsAddMemberOpen(false);
     } catch (error) {
-      console.error("Error adding member:", error)
+      console.error("Error adding member:", error);
     }
-  }
+  };
 
   const handleChangeMemberRole = (memberId: string, newRole: string) => {
     setMembers((prev) =>
       prev.map((member) =>
-        member.id === memberId ? { ...member, role: newRole, updatedAt: new Date().toISOString() } : member,
-      ),
-    )
-  }
+        member.id === memberId
+          ? { ...member, role: newRole, updatedAt: new Date().toISOString() }
+          : member
+      )
+    );
+  };
 
   const handleRemoveMember = (memberId: string) => {
-    setMembers((prev) => prev.filter((member) => member.id !== memberId))
-  }
+    setMembers((prev) => prev.filter((member) => member.id !== memberId));
+  };
 
   const getRoleBadge = (role: string) => {
     switch (role) {
@@ -195,29 +224,29 @@ export default function MembersPage() {
           <Badge className="bg-purple-100 text-purple-800 border-purple-200 dark:bg-purple-900/20 dark:text-purple-400 dark:border-purple-800">
             Admin
           </Badge>
-        )
+        );
       case "treasurer":
         return (
           <Badge className="bg-blue-100 text-blue-800 border-blue-200 dark:bg-blue-900/20 dark:text-blue-400 dark:border-blue-800">
             Treasurer
           </Badge>
-        )
+        );
       case "member":
         return (
           <Badge className="bg-green-100 text-green-800 border-green-200 dark:bg-green-900/20 dark:text-green-400 dark:border-green-800">
             Member
           </Badge>
-        )
+        );
       case "viewer":
         return (
           <Badge className="bg-gray-100 text-gray-800 border-gray-200 dark:bg-gray-900/20 dark:text-gray-400 dark:border-gray-800">
             Viewer
           </Badge>
-        )
+        );
       default:
-        return <Badge variant="outline">{role}</Badge>
+        return <Badge variant="outline">{role}</Badge>;
     }
-  }
+  };
 
   const getAvatarFallback = (name: string) => {
     return name
@@ -225,16 +254,20 @@ export default function MembersPage() {
       .map((part) => part[0])
       .join("")
       .toUpperCase()
-      .substring(0, 2)
-  }
+      .substring(0, 2);
+  };
 
   return (
     <Layout>
       <div className="space-y-6">
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div>
-            <h1 className="text-2xl font-bold text-gray-900 dark:text-white">Members</h1>
-            <p className="text-gray-500 dark:text-gray-400 mt-1">Manage your organization's members and their roles</p>
+            <h1 className="text-2xl font-bold text-gray-900 dark:text-white">
+              Members
+            </h1>
+            <p className="text-gray-500 dark:text-gray-400 mt-1">
+              Manage your organization's members and their roles
+            </p>
           </div>
           <div className="flex items-center gap-2">
             <Dialog open={isAddMemberOpen} onOpenChange={setIsAddMemberOpen}>
@@ -248,7 +281,8 @@ export default function MembersPage() {
                 <DialogHeader>
                   <DialogTitle>Add New Member</DialogTitle>
                   <DialogDescription>
-                    Invite a new member to your organization. They will receive an email invitation.
+                    Invite a new member to your organization. They will receive
+                    an email invitation.
                   </DialogDescription>
                 </DialogHeader>
                 <div className="space-y-4 py-4">
@@ -264,7 +298,10 @@ export default function MembersPage() {
                   </div>
                   <div className="space-y-2">
                     <Label htmlFor="role">Role</Label>
-                    <Select value={newMemberRole} onValueChange={setNewMemberRole}>
+                    <Select
+                      value={newMemberRole}
+                      onValueChange={setNewMemberRole}
+                    >
                       <SelectTrigger id="role">
                         <SelectValue placeholder="Select role" />
                       </SelectTrigger>
@@ -276,15 +313,22 @@ export default function MembersPage() {
                       </SelectContent>
                     </Select>
                     <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">
-                      {newMemberRole === "admin" && "Full access to all organization settings and data."}
-                      {newMemberRole === "treasurer" && "Can manage finances, approve transactions, and view reports."}
-                      {newMemberRole === "member" && "Can create transactions and view basic reports."}
-                      {newMemberRole === "viewer" && "Read-only access to organization data."}
+                      {newMemberRole === "admin" &&
+                        "Full access to all organization settings and data."}
+                      {newMemberRole === "treasurer" &&
+                        "Can manage finances, approve transactions, and view reports."}
+                      {newMemberRole === "member" &&
+                        "Can create transactions and view basic reports."}
+                      {newMemberRole === "viewer" &&
+                        "Read-only access to organization data."}
                     </p>
                   </div>
                 </div>
                 <DialogFooter>
-                  <Button variant="outline" onClick={() => setIsAddMemberOpen(false)}>
+                  <Button
+                    variant="outline"
+                    onClick={() => setIsAddMemberOpen(false)}
+                  >
                     Cancel
                   </Button>
                   <Button onClick={handleAddMember}>Send Invitation</Button>
@@ -295,8 +339,12 @@ export default function MembersPage() {
         </div>
 
         <Card>
-          <CardHeader className="pb-3">
-            <Tabs defaultValue="all" value={activeTab} onValueChange={setActiveTab}>
+          <CardHeader>
+            <Tabs
+              defaultValue="all"
+              value={activeTab}
+              onValueChange={setActiveTab}
+            >
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                 <TabsList>
                   <TabsTrigger value="all">All Members</TabsTrigger>
@@ -327,7 +375,9 @@ export default function MembersPage() {
             ) : filteredMembers.length === 0 ? (
               <div className="text-center p-8">
                 <Users className="mx-auto h-12 w-12 text-gray-400 dark:text-gray-600 mb-4" />
-                <h3 className="text-lg font-medium text-gray-900 dark:text-gray-100 mb-1">No members found</h3>
+                <h3 className="text-lg font-medium text-gray-900 dark:text-gray-100 mb-1">
+                  No members found
+                </h3>
                 <p className="text-gray-500 dark:text-gray-400 mb-4">
                   {searchQuery || roleFilter
                     ? "Try adjusting your filters to see more results"
@@ -356,42 +406,75 @@ export default function MembersPage() {
                         <TableCell>
                           <div className="flex items-center gap-3">
                             <Avatar>
-                              <AvatarImage src={member.user.avatarUrl || ""} alt={member.user.name} />
-                              <AvatarFallback>{getAvatarFallback(member.user.name)}</AvatarFallback>
+                              <AvatarImage
+                                src={member.user.avatarUrl || ""}
+                                alt={member.user.name}
+                              />
+                              <AvatarFallback>
+                                {getAvatarFallback(member.user.name)}
+                              </AvatarFallback>
                             </Avatar>
-                            <div className="font-medium">{member.user.name}</div>
+                            <div className="font-medium">
+                              {member.user.name}
+                            </div>
                           </div>
                         </TableCell>
                         <TableCell>{member.user.email}</TableCell>
                         <TableCell>{getRoleBadge(member.role)}</TableCell>
-                        <TableCell>{format(new Date(member.createdAt), "MMM d, yyyy")}</TableCell>
+                        <TableCell>
+                          {format(new Date(member.createdAt), "MMM d, yyyy")}
+                        </TableCell>
                         <TableCell className="text-right">
                           <DropdownMenu>
                             <DropdownMenuTrigger asChild>
-                              <Button variant="ghost" size="icon" className="h-8 w-8">
+                              <Button
+                                variant="ghost"
+                                size="icon"
+                                className="h-8 w-8"
+                              >
                                 <MoreHorizontal className="h-4 w-4" />
                                 <span className="sr-only">Open menu</span>
                               </Button>
                             </DropdownMenuTrigger>
                             <DropdownMenuContent align="end">
-                              <DropdownMenuItem onClick={() => (window.location.href = `mailto:${member.user.email}`)}>
+                              <DropdownMenuItem
+                                onClick={() =>
+                                  (window.location.href = `mailto:${member.user.email}`)
+                                }
+                              >
                                 <Mail className="mr-2 h-4 w-4" />
                                 <span>Email</span>
                               </DropdownMenuItem>
                               <DropdownMenuSeparator />
-                              <DropdownMenuItem onClick={() => handleChangeMemberRole(member.id, "admin")}>
+                              <DropdownMenuItem
+                                onClick={() =>
+                                  handleChangeMemberRole(member.id, "admin")
+                                }
+                              >
                                 <Shield className="mr-2 h-4 w-4" />
                                 <span>Make Admin</span>
                               </DropdownMenuItem>
-                              <DropdownMenuItem onClick={() => handleChangeMemberRole(member.id, "treasurer")}>
+                              <DropdownMenuItem
+                                onClick={() =>
+                                  handleChangeMemberRole(member.id, "treasurer")
+                                }
+                              >
                                 <Shield className="mr-2 h-4 w-4" />
                                 <span>Make Treasurer</span>
                               </DropdownMenuItem>
-                              <DropdownMenuItem onClick={() => handleChangeMemberRole(member.id, "member")}>
+                              <DropdownMenuItem
+                                onClick={() =>
+                                  handleChangeMemberRole(member.id, "member")
+                                }
+                              >
                                 <User className="mr-2 h-4 w-4" />
                                 <span>Make Member</span>
                               </DropdownMenuItem>
-                              <DropdownMenuItem onClick={() => handleChangeMemberRole(member.id, "viewer")}>
+                              <DropdownMenuItem
+                                onClick={() =>
+                                  handleChangeMemberRole(member.id, "viewer")
+                                }
+                              >
                                 <User className="mr-2 h-4 w-4" />
                                 <span>Make Viewer</span>
                               </DropdownMenuItem>
@@ -419,14 +502,18 @@ export default function MembersPage() {
         <Card>
           <CardHeader>
             <CardTitle>Role Permissions</CardTitle>
-            <CardDescription>Understanding the different roles and their permissions</CardDescription>
+            <CardDescription>
+              Understanding the different roles and their permissions
+            </CardDescription>
           </CardHeader>
           <CardContent>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
               <div className="p-4 border rounded-lg border-purple-200 dark:border-purple-800 bg-purple-50 dark:bg-purple-900/10">
                 <div className="flex items-center gap-2 mb-2">
                   <Shield className="h-5 w-5 text-purple-600 dark:text-purple-400" />
-                  <h3 className="font-medium text-purple-800 dark:text-purple-400">Admin</h3>
+                  <h3 className="font-medium text-purple-800 dark:text-purple-400">
+                    Admin
+                  </h3>
                 </div>
                 <ul className="text-sm space-y-1 text-gray-700 dark:text-gray-300">
                   <li>• Full organization access</li>
@@ -440,7 +527,9 @@ export default function MembersPage() {
               <div className="p-4 border rounded-lg border-blue-200 dark:border-blue-800 bg-blue-50 dark:bg-blue-900/10">
                 <div className="flex items-center gap-2 mb-2">
                   <Shield className="h-5 w-5 text-blue-600 dark:text-blue-400" />
-                  <h3 className="font-medium text-blue-800 dark:text-blue-400">Treasurer</h3>
+                  <h3 className="font-medium text-blue-800 dark:text-blue-400">
+                    Treasurer
+                  </h3>
                 </div>
                 <ul className="text-sm space-y-1 text-gray-700 dark:text-gray-300">
                   <li>• Manage financial data</li>
@@ -454,7 +543,9 @@ export default function MembersPage() {
               <div className="p-4 border rounded-lg border-green-200 dark:border-green-800 bg-green-50 dark:bg-green-900/10">
                 <div className="flex items-center gap-2 mb-2">
                   <User className="h-5 w-5 text-green-600 dark:text-green-400" />
-                  <h3 className="font-medium text-green-800 dark:text-green-400">Member</h3>
+                  <h3 className="font-medium text-green-800 dark:text-green-400">
+                    Member
+                  </h3>
                 </div>
                 <ul className="text-sm space-y-1 text-gray-700 dark:text-gray-300">
                   <li>• Create transactions</li>
@@ -468,7 +559,9 @@ export default function MembersPage() {
               <div className="p-4 border rounded-lg border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-900/10">
                 <div className="flex items-center gap-2 mb-2">
                   <User className="h-5 w-5 text-gray-600 dark:text-gray-400" />
-                  <h3 className="font-medium text-gray-800 dark:text-gray-400">Viewer</h3>
+                  <h3 className="font-medium text-gray-800 dark:text-gray-400">
+                    Viewer
+                  </h3>
                 </div>
                 <ul className="text-sm space-y-1 text-gray-700 dark:text-gray-300">
                   <li>• Read-only access</li>
@@ -483,6 +576,5 @@ export default function MembersPage() {
         </Card>
       </div>
     </Layout>
-  )
+  );
 }
-

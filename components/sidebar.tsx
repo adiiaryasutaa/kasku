@@ -3,17 +3,15 @@
 import type React from "react";
 
 import {
-  BarChart2,
   Receipt,
-  Building2,
   CreditCard,
   FileText,
   Wallet,
   Users2,
   Shield,
   CheckSquare,
-  Bell,
   Settings,
+  Group,
   HelpCircle,
   Menu,
   Home,
@@ -22,6 +20,7 @@ import {
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 import db from "@/lib/data";
 
 interface NavItem {
@@ -74,13 +73,25 @@ export default function Sidebar() {
     icon: any;
     children: React.ReactNode;
   }) {
+    const pathname = usePathname();
+    const isActive =
+      pathname === href || (href === "/" && pathname === "/dashboard");
+
     return (
       <Link
         href={href}
         onClick={handleNavigation}
-        className="flex items-center px-3 py-2 text-sm rounded-md transition-colors text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white hover:bg-gray-50 dark:hover:bg-[#1F1F23]"
+        className={`flex items-center px-3 py-2 text-sm rounded-md transition-colors ${
+          isActive
+            ? "bg-primary text-white dark:text-gray-900 font-medium"
+            : "text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white hover:bg-gray-50 dark:hover:bg-[#1F1F23]"
+        }`}
       >
-        <Icon className="h-4 w-4 mr-3 flex-shrink-0" />
+        <Icon
+          className={`h-4 w-4 mr-3 flex-shrink-0 ${
+            isActive ? "text-white dark:text-gray-900" : ""
+          }`}
+        />
         {children}
       </Link>
     );
@@ -107,6 +118,7 @@ export default function Sidebar() {
     {
       title: "Management",
       items: [
+        { href: "/categories", icon: Group, label: "Categories" },
         { href: "/members", icon: Users2, label: "Members" },
         { href: "/roles", icon: Shield, label: "Roles & Permissions" },
         { href: "/approvals", icon: CheckSquare, label: "Approvals" },
