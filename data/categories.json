@@ -1,0 +1,58 @@
+[
+  {
+    "id": "cat_01",
+    "name": "Events & Activities",
+    "description": "Expenses related to organization events and activities",
+    "color": "#3B82F6",
+    "icon": "Calendar",
+    "budgetAllocation": 5000,
+    "organizationId": "org_01",
+    "createdAt": "2023-01-15T08:30:00.000Z",
+    "updatedAt": "2023-01-15T08:30:00.000Z"
+  },
+  {
+    "id": "cat_02",
+    "name": "Administrative",
+    "description": "Office supplies and administrative expenses",
+    "color": "#10B981",
+    "icon": "FileText",
+    "budgetAllocation": 2000,
+    "organizationId": "org_01",
+    "createdAt": "2023-01-15T08:35:00.000Z",
+    "updatedAt": "2023-01-15T08:35:00.000Z"
+  },
+  {
+    "id": "cat_03",
+    "name": "Marketing",
+    "description": "Promotional materials and marketing expenses",
+    "color": "#8B5CF6",
+    "icon": "Megaphone",
+    "budgetAllocation": 1500,
+    "organizationId": "org_01",
+    "createdAt": "2023-01-15T08:40:00.000Z",
+    "updatedAt": "2023-01-15T08:40:00.000Z"
+  },
+  {
+    "id": "cat_04",
+    "name": "Equipment",
+    "description": "Equipment purchases and rentals",
+    "color": "#F59E0B",
+    "icon": "Tool",
+    "budgetAllocation": 3000,
+    "organizationId": "org_01",
+    "createdAt": "2023-01-15T08:45:00.000Z",
+    "updatedAt": "2023-01-15T08:45:00.000Z"
+  },
+  {
+    "id": "cat_05",
+    "name": "Miscellaneous",
+    "description": "Other expenses that don't fit in other categories",
+    "color": "#EF4444",
+    "icon": "MoreHorizontal",
+    "budgetAllocation": 1000,
+    "organizationId": "org_01",
+    "createdAt": "2023-01-15T08:50:00.000Z",
+    "updatedAt": "2023-01-15T08:50:00.000Z"
+  }
+]
+

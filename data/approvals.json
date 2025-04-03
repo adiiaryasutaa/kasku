@@ -1,0 +1,47 @@
+[
+  {
+    "id": "approval_hist_1",
+    "transactionId": "tx_hist_1",
+    "title": "Office Supplies Reimbursement",
+    "description": "Reimbursement for printer paper and ink cartridges",
+    "amount": 89.99,
+    "type": "expense",
+    "status": "approved",
+    "categoryId": "cat_02",
+    "requestedBy": "user_03",
+    "createdAt": "2023-04-10T10:30:00.000Z",
+    "updatedAt": "2023-04-11T14:25:00.000Z",
+    "approvedBy": "user_01",
+    "attachmentUrl": "/receipts/office-supplies.pdf"
+  },
+  {
+    "id": "approval_hist_2",
+    "transactionId": "tx_hist_2",
+    "title": "Team Lunch Expense",
+    "description": "Lunch for quarterly planning meeting",
+    "amount": 156.75,
+    "type": "expense",
+    "status": "rejected",
+    "categoryId": "cat_01",
+    "requestedBy": "user_02",
+    "createdAt": "2023-04-07T09:15:00.000Z",
+    "updatedAt": "2023-04-08T11:30:00.000Z",
+    "approvedBy": "user_01",
+    "rejectionReason": "Exceeds the budget for team lunches. Please submit with proper allocation."
+  },
+  {
+    "id": "approval_hist_3",
+    "transactionId": "tx_hist_3",
+    "title": "Budget Increase Request",
+    "description": "Request to increase marketing budget by $500",
+    "amount": 500,
+    "type": "budget",
+    "status": "approved",
+    "categoryId": "cat_03",
+    "requestedBy": "user_02",
+    "createdAt": "2023-03-20T13:45:00.000Z",
+    "updatedAt": "2023-03-21T10:15:00.000Z",
+    "approvedBy": "user_01"
+  }
+]
+

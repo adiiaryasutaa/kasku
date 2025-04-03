@@ -1,0 +1,48 @@
+[
+  {
+    "id": "role_admin",
+    "name": "Admin",
+    "description": "Full access to all organization features",
+    "isDefault": false,
+    "isSystem": true,
+    "createdAt": "2023-01-01T00:00:00.000Z",
+    "updatedAt": "2023-01-01T00:00:00.000Z"
+  },
+  {
+    "id": "role_treasurer",
+    "name": "Treasurer",
+    "description": "Can manage finances and approve transactions",
+    "isDefault": false,
+    "isSystem": true,
+    "createdAt": "2023-01-01T00:00:00.000Z",
+    "updatedAt": "2023-01-01T00:00:00.000Z"
+  },
+  {
+    "id": "role_member",
+    "name": "Member",
+    "description": "Can create transactions and view basic reports",
+    "isDefault": true,
+    "isSystem": true,
+    "createdAt": "2023-01-01T00:00:00.000Z",
+    "updatedAt": "2023-01-01T00:00:00.000Z"
+  },
+  {
+    "id": "role_viewer",
+    "name": "Viewer",
+    "description": "Read-only access to organization data",
+    "isDefault": false,
+    "isSystem": true,
+    "createdAt": "2023-01-01T00:00:00.000Z",
+    "updatedAt": "2023-01-01T00:00:00.000Z"
+  },
+  {
+    "id": "role_custom",
+    "name": "Project Manager",
+    "description": "Custom role for project management",
+    "isDefault": false,
+    "isSystem": false,
+    "createdAt": "2023-01-15T00:00:00.000Z",
+    "updatedAt": "2023-01-15T00:00:00.000Z"
+  }
+]
+

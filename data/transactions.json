@@ -1,0 +1,87 @@
+[
+  {
+    "id": "tx_01",
+    "title": "Event Ticket Sales",
+    "description": "Spring Festival ticket sales",
+    "amount": 1250.0,
+    "type": "income",
+    "categoryId": "cat_01",
+    "organizationId": "org_01",
+    "createdBy": "user_01",
+    "status": "completed",
+    "attachmentUrl": "/receipts/ticket-sales.pdf",
+    "createdAt": "2023-04-15T14:45:00.000Z",
+    "updatedAt": "2023-04-15T14:45:00.000Z"
+  },
+  {
+    "id": "tx_02",
+    "title": "Membership Dues",
+    "description": "Monthly membership collection",
+    "amount": 750.0,
+    "type": "income",
+    "categoryId": "cat_02",
+    "organizationId": "org_01",
+    "createdBy": "user_01",
+    "status": "completed",
+    "attachmentUrl": null,
+    "createdAt": "2023-04-15T09:00:00.000Z",
+    "updatedAt": "2023-04-15T09:00:00.000Z"
+  },
+  {
+    "id": "tx_03",
+    "title": "Catering Services",
+    "description": "Board meeting refreshments",
+    "amount": 420.5,
+    "type": "expense",
+    "categoryId": "cat_01",
+    "organizationId": "org_01",
+    "createdBy": "user_02",
+    "status": "completed",
+    "attachmentUrl": "/receipts/catering-invoice.pdf",
+    "createdAt": "2023-04-14T15:30:00.000Z",
+    "updatedAt": "2023-04-14T15:30:00.000Z"
+  },
+  {
+    "id": "tx_04",
+    "title": "Office Supplies",
+    "description": "Printer paper and ink cartridges",
+    "amount": 85.75,
+    "type": "expense",
+    "categoryId": "cat_02",
+    "organizationId": "org_01",
+    "createdBy": "user_03",
+    "status": "completed",
+    "attachmentUrl": null,
+    "createdAt": "2023-04-13T11:15:00.000Z",
+    "updatedAt": "2023-04-13T11:15:00.000Z"
+  },
+  {
+    "id": "tx_05",
+    "title": "Workshop Materials",
+    "description": "Leadership workshop materials",
+    "amount": 320.0,
+    "type": "expense",
+    "categoryId": "cat_04",
+    "organizationId": "org_01",
+    "createdBy": "user_02",
+    "status": "pending",
+    "attachmentUrl": "/receipts/workshop-materials.pdf",
+    "createdAt": "2023-04-12T13:45:00.000Z",
+    "updatedAt": "2023-04-12T13:45:00.000Z"
+  },
+  {
+    "id": "tx_06",
+    "title": "Donation - Community Fund",
+    "description": "Annual community support donation",
+    "amount": 500.0,
+    "type": "income",
+    "categoryId": "cat_05",
+    "organizationId": "org_01",
+    "createdBy": "user_01",
+    "status": "completed",
+    "attachmentUrl": null,
+    "createdAt": "2023-04-10T10:30:00.000Z",
+    "updatedAt": "2023-04-10T10:30:00.000Z"
+  }
+]
+

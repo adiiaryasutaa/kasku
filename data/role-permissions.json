@@ -1,0 +1,173 @@
+[
+  {
+    "roleId": "role_admin",
+    "permissionId": "view_dashboard",
+    "isGranted": true
+  },
+  {
+    "roleId": "role_admin",
+    "permissionId": "view_reports",
+    "isGranted": true
+  },
+  {
+    "roleId": "role_admin",
+    "permissionId": "create_transaction",
+    "isGranted": true
+  },
+  {
+    "roleId": "role_admin",
+    "permissionId": "edit_transaction",
+    "isGranted": true
+  },
+  {
+    "roleId": "role_admin",
+    "permissionId": "delete_transaction",
+    "isGranted": true
+  },
+  {
+    "roleId": "role_admin",
+    "permissionId": "approve_transaction",
+    "isGranted": true
+  },
+  {
+    "roleId": "role_admin",
+    "permissionId": "view_members",
+    "isGranted": true
+  },
+  {
+    "roleId": "role_admin",
+    "permissionId": "invite_members",
+    "isGranted": true
+  },
+  {
+    "roleId": "role_admin",
+    "permissionId": "remove_members",
+    "isGranted": true
+  },
+  {
+    "roleId": "role_admin",
+    "permissionId": "manage_roles",
+    "isGranted": true
+  },
+  {
+    "roleId": "role_admin",
+    "permissionId": "edit_organization",
+    "isGranted": true
+  },
+  {
+    "roleId": "role_admin",
+    "permissionId": "manage_categories",
+    "isGranted": true
+  },
+  {
+    "roleId": "role_admin",
+    "permissionId": "manage_budgets",
+    "isGranted": true
+  },
+  {
+    "roleId": "role_treasurer",
+    "permissionId": "view_dashboard",
+    "isGranted": true
+  },
+  {
+    "roleId": "role_treasurer",
+    "permissionId": "view_reports",
+    "isGranted": true
+  },
+  {
+    "roleId": "role_treasurer",
+    "permissionId": "create_transaction",
+    "isGranted": true
+  },
+  {
+    "roleId": "role_treasurer",
+    "permissionId": "edit_transaction",
+    "isGranted": true
+  },
+  {
+    "roleId": "role_treasurer",
+    "permissionId": "delete_transaction",
+    "isGranted": true
+  },
+  {
+    "roleId": "role_treasurer",
+    "permissionId": "approve_transaction",
+    "isGranted": true
+  },
+  {
+    "roleId": "role_treasurer",
+    "permissionId": "view_members",
+    "isGranted": true
+  },
+  {
+    "roleId": "role_treasurer",
+    "permissionId": "manage_categories",
+    "isGranted": true
+  },
+  {
+    "roleId": "role_treasurer",
+    "permissionId": "manage_budgets",
+    "isGranted": true
+  },
+  {
+    "roleId": "role_member",
+    "permissionId": "view_dashboard",
+    "isGranted": true
+  },
+  {
+    "roleId": "role_member",
+    "permissionId": "view_reports",
+    "isGranted": true
+  },
+  {
+    "roleId": "role_member",
+    "permissionId": "create_transaction",
+    "isGranted": true
+  },
+  {
+    "roleId": "role_member",
+    "permissionId": "view_members",
+    "isGranted": true
+  },
+  {
+    "roleId": "role_viewer",
+    "permissionId": "view_dashboard",
+    "isGranted": true
+  },
+  {
+    "roleId": "role_viewer",
+    "permissionId": "view_reports",
+    "isGranted": true
+  },
+  {
+    "roleId": "role_viewer",
+    "permissionId": "view_members",
+    "isGranted": true
+  },
+  {
+    "roleId": "role_custom",
+    "permissionId": "view_dashboard",
+    "isGranted": true
+  },
+  {
+    "roleId": "role_custom",
+    "permissionId": "view_reports",
+    "isGranted": true
+  },
+  {
+    "roleId": "role_custom",
+    "permissionId": "create_transaction",
+    "isGranted": true
+  },
+  {
+    "roleId": "role_custom",
+    "permissionId": "edit_transaction",
+    "isGranted": true
+  },
+  {
+    "roleId": "role_custom",
+    "permissionId": "view_members",
+    "isGranted": true
+  }
+]
+

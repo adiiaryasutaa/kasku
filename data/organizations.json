@@ -1,0 +1,39 @@
+[
+  {
+    "id": "org_01",
+    "name": "Student Council",
+    "description": "University student government organization",
+    "type": "student",
+    "currency": "USD",
+    "logoUrl": "/logos/student-council.png",
+    "fiscalYearStart": "2023-01-01T00:00:00.000Z",
+    "createdBy": "user_01",
+    "createdAt": "2023-01-01T00:00:00.000Z",
+    "updatedAt": "2023-01-01T00:00:00.000Z"
+  },
+  {
+    "id": "org_02",
+    "name": "Debate Club",
+    "description": "University debate and public speaking club",
+    "type": "student",
+    "currency": "USD",
+    "logoUrl": "/logos/debate-club.png",
+    "fiscalYearStart": "2023-01-01T00:00:00.000Z",
+    "createdBy": "user_01",
+    "createdAt": "2023-01-05T00:00:00.000Z",
+    "updatedAt": "2023-01-05T00:00:00.000Z"
+  },
+  {
+    "id": "org_03",
+    "name": "Sports Team",
+    "description": "University basketball team",
+    "type": "student",
+    "currency": "USD",
+    "logoUrl": "/logos/sports-team.png",
+    "fiscalYearStart": "2023-01-01T00:00:00.000Z",
+    "createdBy": "user_01",
+    "createdAt": "2023-01-10T00:00:00.000Z",
+    "updatedAt": "2023-01-10T00:00:00.000Z"
+  }
+]
+

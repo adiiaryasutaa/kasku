@@ -1,0 +1,81 @@
+[
+  {
+    "id": "view_dashboard",
+    "name": "View Dashboard",
+    "description": "Can view the organization dashboard",
+    "category": "general"
+  },
+  {
+    "id": "view_reports",
+    "name": "View Reports",
+    "description": "Can view financial reports",
+    "category": "general"
+  },
+  {
+    "id": "create_transaction",
+    "name": "Create Transactions",
+    "description": "Can create new transactions",
+    "category": "transactions"
+  },
+  {
+    "id": "edit_transaction",
+    "name": "Edit Transactions",
+    "description": "Can edit existing transactions",
+    "category": "transactions"
+  },
+  {
+    "id": "delete_transaction",
+    "name": "Delete Transactions",
+    "description": "Can delete transactions",
+    "category": "transactions"
+  },
+  {
+    "id": "approve_transaction",
+    "name": "Approve Transactions",
+    "description": "Can approve pending transactions",
+    "category": "transactions"
+  },
+  {
+    "id": "view_members",
+    "name": "View Members",
+    "description": "Can view organization members",
+    "category": "members"
+  },
+  {
+    "id": "invite_members",
+    "name": "Invite Members",
+    "description": "Can invite new members to the organization",
+    "category": "members"
+  },
+  {
+    "id": "remove_members",
+    "name": "Remove Members",
+    "description": "Can remove members from the organization",
+    "category": "members"
+  },
+  {
+    "id": "manage_roles",
+    "name": "Manage Roles",
+    "description": "Can assign roles to members",
+    "category": "members"
+  },
+  {
+    "id": "edit_organization",
+    "name": "Edit Organization",
+    "description": "Can edit organization details",
+    "category": "settings"
+  },
+  {
+    "id": "manage_categories",
+    "name": "Manage Categories",
+    "description": "Can create and edit categories",
+    "category": "settings"
+  },
+  {
+    "id": "manage_budgets",
+    "name": "Manage Budgets",
+    "description": "Can set and adjust budget allocations",
+    "category": "settings"
+  }
+]
+

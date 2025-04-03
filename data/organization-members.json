@@ -1,0 +1,35 @@
+[
+  {
+    "id": "member_user_01",
+    "userId": "user_01",
+    "organizationId": "org_01",
+    "role": "admin",
+    "createdAt": "2022-12-15T00:00:00.000Z",
+    "updatedAt": "2022-12-15T00:00:00.000Z"
+  },
+  {
+    "id": "member_user_02",
+    "userId": "user_02",
+    "organizationId": "org_01",
+    "role": "treasurer",
+    "createdAt": "2022-12-16T00:00:00.000Z",
+    "updatedAt": "2022-12-16T00:00:00.000Z"
+  },
+  {
+    "id": "member_user_03",
+    "userId": "user_03",
+    "organizationId": "org_01",
+    "role": "member",
+    "createdAt": "2022-12-17T00:00:00.000Z",
+    "updatedAt": "2022-12-17T00:00:00.000Z"
+  },
+  {
+    "id": "member_user_04",
+    "userId": "user_04",
+    "organizationId": "org_01",
+    "role": "viewer",
+    "createdAt": "2022-12-18T00:00:00.000Z",
+    "updatedAt": "2022-12-18T00:00:00.000Z"
+  }
+]
+

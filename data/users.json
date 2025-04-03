@@ -1,0 +1,39 @@
+[
+  {
+    "id": "user_01",
+    "name": "Alex Johnson",
+    "email": "alex@example.com",
+    "role": "admin",
+    "avatarUrl": "/avatars/alex.png",
+    "createdAt": "2022-12-15T00:00:00.000Z",
+    "updatedAt": "2022-12-15T00:00:00.000Z"
+  },
+  {
+    "id": "user_02",
+    "name": "Sarah Kim",
+    "email": "sarah@example.com",
+    "role": "treasurer",
+    "avatarUrl": "/avatars/sarah.png",
+    "createdAt": "2022-12-16T00:00:00.000Z",
+    "updatedAt": "2022-12-16T00:00:00.000Z"
+  },
+  {
+    "id": "user_03",
+    "name": "David Chen",
+    "email": "david@example.com",
+    "role": "member",
+    "avatarUrl": "/avatars/david.png",
+    "createdAt": "2022-12-17T00:00:00.000Z",
+    "updatedAt": "2022-12-17T00:00:00.000Z"
+  },
+  {
+    "id": "user_04",
+    "name": "Michael Johnson",
+    "email": "michael@example.com",
+    "role": "viewer",
+    "avatarUrl": "/avatars/michael.png",
+    "createdAt": "2022-12-18T00:00:00.000Z",
+    "updatedAt": "2022-12-18T00:00:00.000Z"
+  }
+]
+
