@@ -35,7 +35,7 @@ import {
 } from "@/components/ui/table";
 import { Badge } from "@/components/ui/badge";
 import { format, subDays, startOfMonth } from "date-fns";
-import Layout from "../layout";
+import AppLayout from "../layouts/app-layout";
 import db from "@/lib/data";
 
 interface Expense {
@@ -248,7 +248,7 @@ export default function ExpensesPage() {
   }, [expenses, searchQuery, categoryFilter, dateRange, categories]);
 
   return (
-    <Layout>
+    <AppLayout>
       <div className="space-y-6">
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div>
@@ -582,6 +582,6 @@ export default function ExpensesPage() {
           </div>
         </div>
       </div>
-    </Layout>
+    </AppLayout>
   );
 }

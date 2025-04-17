@@ -74,7 +74,7 @@ export default function IncomeDrawer({ isOpen, onClose, onSave, income, mode }: 
     const { name, value } = e.target
     setFormData((prev) => ({ ...prev, [name]: value }))
 
-    // Clear error when user types
+    // Clear error when user database
     if (errors[name]) {
       setErrors((prev) => ({ ...prev, [name]: "" }))
     }

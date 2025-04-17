@@ -60,7 +60,3 @@ Follow these steps to set up the project locally:
 - **lib**: Utility functions and libraries.
 - **public**: Static assets like images and fonts.
 - **styles**: Global and shared styles.
-
-```
-
-```

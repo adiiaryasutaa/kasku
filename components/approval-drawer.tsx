@@ -40,7 +40,7 @@ export default function ApprovalDrawer({ isOpen, onClose, onAction, approvalId }
         if (!approvalData) return
         setApproval(approvalData)
 
-        // Load transaction
+        // Load transactions
         if (approvalData.transactionId) {
           const transactionData = await db.transactions.findFirst({
             where: { id: approvalData.transactionId },

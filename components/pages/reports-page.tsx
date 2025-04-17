@@ -34,7 +34,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { format, subMonths, startOfMonth, eachMonthOfInterval } from "date-fns";
-import Layout from "../layout";
+import AppLayout from "../layouts/app-layout";
 import db from "@/lib/data";
 
 interface FinancialSummary {
@@ -262,7 +262,7 @@ export default function ReportsPage() {
   }, [timeRange, organizationId]);
 
   return (
-    <Layout>
+    <AppLayout>
       <div className="space-y-6">
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div>
@@ -1264,6 +1264,6 @@ export default function ReportsPage() {
           </TabsContent>
         </Tabs>
       </div>
-    </Layout>
+    </AppLayout>
   );
 }

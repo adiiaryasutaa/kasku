@@ -79,7 +79,7 @@ export default function RoleDrawer({ isOpen, onClose, onSave, role, mode }: Role
     const { name, value } = e.target
     setFormData((prev) => ({ ...prev, [name]: value }))
 
-    // Clear error when user types
+    // Clear error when user database
     if (errors[name]) {
       setErrors((prev) => ({ ...prev, [name]: "" }))
     }

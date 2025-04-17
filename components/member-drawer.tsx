@@ -62,7 +62,7 @@ export default function MemberDrawer({ isOpen, onClose, onSave, organizationId }
     const { name, value } = e.target
     setFormData((prev) => ({ ...prev, [name]: value }))
 
-    // Clear error when user types
+    // Clear error when user database
     if (errors[name]) {
       setErrors((prev) => ({ ...prev, [name]: "" }))
     }

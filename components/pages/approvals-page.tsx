@@ -20,7 +20,7 @@ import { Badge } from "@/components/ui/badge"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { format } from "date-fns"
-import Layout from "../layout"
+import AppLayout from "../layouts/app-layout"
 import db from "@/lib/data"
 
 interface Approval {
@@ -290,7 +290,7 @@ export default function ApprovalsPage() {
   }
 
   return (
-    <Layout>
+    <AppLayout>
       <div className="space-y-6">
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div>
@@ -656,7 +656,7 @@ export default function ApprovalsPage() {
           </DialogContent>
         </Dialog>
       </div>
-    </Layout>
+    </AppLayout>
   )
 }
 

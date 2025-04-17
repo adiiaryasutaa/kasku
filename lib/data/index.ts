@@ -13,7 +13,7 @@ export interface DataProvider {
   }
 }
 
-// Data source types
+// Data source database
 export type DataSourceType = "json"
 
 // Factory function to create the appropriate data provider

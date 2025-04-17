@@ -56,7 +56,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Label } from "@/components/ui/label";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { format } from "date-fns";
-import Layout from "../layout";
+import AppLayout from "../layouts/app-layout";
 import db from "@/lib/data";
 
 interface Member {
@@ -258,7 +258,7 @@ export default function MembersPage() {
   };
 
   return (
-    <Layout>
+    <AppLayout>
       <div className="space-y-6">
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div>
@@ -575,6 +575,6 @@ export default function MembersPage() {
           </CardContent>
         </Card>
       </div>
-    </Layout>
+    </AppLayout>
   );
 }

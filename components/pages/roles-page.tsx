@@ -21,7 +21,7 @@ import { Switch } from "@/components/ui/switch"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
 import { Checkbox } from "@/components/ui/checkbox"
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import Layout from "../layout"
+import AppLayout from "../layouts/app-layout"
 import db from "@/lib/data"
 
 interface Role {
@@ -239,7 +239,7 @@ export default function RolesPage() {
   }
 
   return (
-    <Layout>
+    <AppLayout>
       <div className="space-y-6">
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div>
@@ -519,7 +519,7 @@ export default function RolesPage() {
           </DialogContent>
         </Dialog>
       </div>
-    </Layout>
+    </AppLayout>
   )
 }
 

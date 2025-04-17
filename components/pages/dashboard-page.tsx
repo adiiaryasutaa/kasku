@@ -1,30 +1,17 @@
 "use client";
 
-import {
-  Calendar,
-  CreditCard,
-  Wallet,
-  DollarSign,
-  TrendingUp,
-  AlertCircle,
-  Download,
-  ArrowRight,
-} from "lucide-react";
-import TransactionList from "@/components/transaction-list";
-import BudgetTracking from "@/components/budget-tracking";
-import ApprovalRequests from "@/components/approval-requests";
 import { useEffect, useState } from "react";
 import db from "@/lib/data";
-import Layout from "@/components/layout";
-import { Card, CardContent, CardFooter, CardHeader } from "../ui/card";
-import { Button } from "@/components/ui/button";
-import TotalBalanceCard from "../dashboard/total-balance-card";
-import MonthlyIncomeCard from "../dashboard/monthly-income-card";
-import MonthlyExpensesCard from "../dashboard/monthly-expenses-card";
-import BudgetUtilizationCard from "../dashboard/budget-utilization-card";
-import RecentTransactionCard from "../dashboard/recent-transaction-card";
-import ApprovalRequestCard from "../dashboard/approval-request-card";
-import BudgetTrackingCard from "../dashboard/budget-tracking-card";
+import AppLayout from "@/components/layouts/app-layout";
+import {
+  ApprovalRequestWidget,
+  BudgetTrackingWidget,
+  BudgetUtilizationWidget,
+  MonthlyExpenseWidget,
+  MonthlyIncomeWidget,
+  RecentTransactionWidget,
+  TotalBalanceWidget,
+} from "@/components/organisms/dashboard";
 
 interface FinancialSummary {
   totalBalance: number;
@@ -126,32 +113,30 @@ export default function DashboardPage() {
   }, []);
 
   return (
-    <Layout>
+    <AppLayout>
       <div className="space-y-4">
         {/* Financial Summary Cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-          <TotalBalanceCard totalBalance={summary.totalBalance} />
+          <TotalBalanceWidget totalBalance={summary.totalBalance} />
 
-          <MonthlyIncomeCard monthlyIncome={summary.monthlyIncome} />
+          <MonthlyIncomeWidget monthlyIncome={summary.monthlyIncome} />
 
-          <MonthlyExpensesCard monthlyExpenses={summary.monthlyExpenses} />
+          <MonthlyExpenseWidget monthlyExpenses={summary.monthlyExpenses} />
 
-          <BudgetUtilizationCard
+          <BudgetUtilizationWidget
             budgetUtilization={summary.budgetUtilization}
             totalBudget={summary.totalBudget}
           />
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
-          <RecentTransactionCard />
+          <RecentTransactionWidget />
 
-          {/* Approval Requests */}
-          <ApprovalRequestCard />
+          <ApprovalRequestWidget />
         </div>
 
-        {/* Budget Tracking */}
-        <BudgetTrackingCard />
+        <BudgetTrackingWidget />
       </div>
-    </Layout>
+    </AppLayout>
   );
 }

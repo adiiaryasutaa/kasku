@@ -43,7 +43,7 @@ import {
   eachMonthOfInterval,
   subMonths,
 } from "date-fns";
-import Layout from "../layout";
+import AppLayout from "../layouts/app-layout";
 import db from "@/lib/data";
 
 interface Income {
@@ -294,7 +294,7 @@ export default function IncomePage() {
   }, [incomes, searchQuery, categoryFilter, dateRange, categories]);
 
   return (
-    <Layout>
+    <AppLayout>
       <div className="space-y-6">
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div>
@@ -743,6 +743,6 @@ export default function IncomePage() {
           </Card>
         </div>
       </div>
-    </Layout>
+    </AppLayout>
   );
 }

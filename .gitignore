@@ -31,7 +31,7 @@ yarn-error.log*
 
 # local env files
 .env*.local
-.env
+.env.local
 
 # vercel
 .vercel
@@ -42,3 +42,5 @@ next-env.d.ts
 
 # Visual Studio Code Config
 .vscode/
+
+/.idea
